@@ -1,11 +1,12 @@
-# Merges a Pull Request branch into the develop branch whenever the PR is approved.
+# Merges a Pull Request branch into the development branch whenever the PR is approved.
 # 
 # Use the following event trigger to ensure this workflow runs when a review is submitted:
 # on:
 #   pull_request_review:
 #     types: [submitted]
 #
-# Refer to the README for details on the WORKFLOW parameters.
+# Refer to the README for details on the WORKFLOW parameters. This workflow requires Read and Write access on
+# the "Contents" permission on the repository in order to trigger any workflows that run on the development branch.
 #
 
 name: Deploy PRs to development environment once approved

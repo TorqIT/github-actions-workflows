@@ -1,4 +1,4 @@
-# Resets the develop branch to match the main branch.
+# Resets the development branch to match the main branch.
 # 
 # In typical situations, you would want to run this on a schedule such as the following which will 
 # trigger the workflow at midnight every Sunday:
@@ -6,7 +6,8 @@
 #   schedule:
 #     - cron: "0 0 * * SUN"
 #
-# Refer to the README for details on the WORKFLOW parameters.
+# Refer to the README for details on the WORKFLOW parameters. This workflow requires Read and Write access on
+# the "Contents" permission on the repository in order to trigger any workflows that run on the development branch.
 #
 
 name: Reset develop branch to match main
