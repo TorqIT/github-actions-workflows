@@ -29,3 +29,4 @@ jobs:
           git config user.email "<>"
           git tag -fa ${MAJOR} -m "Update major version tag"
           git push origin ${MAJOR} --force
+          echo "major=${MAJOR}" >> $GITHUB_OUTPUT
