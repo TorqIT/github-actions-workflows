@@ -14,7 +14,7 @@ on:
         required: false
         type: string
     outputs:
-      tag:
+      specific:
         description: "The specific release tag"
         value: ${{ jobs.tag-major-release.outputs.specific }}
       major:
