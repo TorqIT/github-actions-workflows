@@ -13,15 +13,26 @@ on:
       RUNNER:
         required: false
         type: string
+    outputs:
+      tag:
+        description: "The specific release tag"
+        value: ${{ jobs.tag-major-release.outputs.specific }}
+      major:
+        description: "The major release tag created/updated by this job"
+        value: ${{ jobs.tag-major-release.outputs.major }}
 
 jobs:
   tag-major-release:
     runs-on: ${{ inputs.RUNNER || 'ubuntu-latest' }}
+    outputs:
+      major: ${{ steps.update.outputs.major }}
+      specific: ${{ steps.update.outputs.specific }} 
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Get major version number and update tag
+        id: update
         run: |
           VERSION=${GITHUB_REF#refs/tags/}
           MAJOR=${VERSION%%.*}
@@ -30,3 +41,4 @@ jobs:
           git tag -fa ${MAJOR} -m "Update major version tag"
           git push origin ${MAJOR} --force
           echo "major=${MAJOR}" >> $GITHUB_OUTPUT
+          echo "specific=${VERSION}" >> $GITHUB_OUTPUT
