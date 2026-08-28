@@ -1,0 +1,11 @@
+# META - Updates the major release tag on this repo
+
+name: Update major release tag
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  tag-major-release:
+    uses: ./.github/workflows/update-major-release-tag.yml
