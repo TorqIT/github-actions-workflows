@@ -26,7 +26,7 @@ At present, reusable workflows can access [GitHub Environment](https://docs.gith
 
 ### Self-hosted runners
 
-All workflows contain an optional `RUNNER` input that will accept the name of a self-hosted runner. If this parameter is not provided, an `ubuntu-latest` GitHub runner will be used.
+All workflows contain an optional `RUNNER` input that will accept the name of a self-hosted runner. If this parameter is not provided, an `ubuntu-24.04` GitHub runner will be used.
 
 Per [GitHub's documentation](https://docs.github.com/en/actions/using-workflows/reusing-workflows#using-self-hosted-runners), these workflows can only access self-hosted runners in the [Torq IT organization](https://github.com/torqit). As a workaround, you can fork this repository into your organization in order to utilize your organization's self-hosted runners.
 

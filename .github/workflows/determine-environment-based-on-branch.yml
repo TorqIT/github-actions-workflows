@@ -7,7 +7,7 @@
 # jobs:
 #   determine-environment:
 #     uses: TorqIT/github-actions-workflows/.github/workflows/determine-environment-based-on-branch.yml@sha
-# 
+#
 #   another-job:
 #     needs: [determine-environment]
 #     environment: ${{ needs.determine-environment.outputs.environment }}
@@ -21,13 +21,14 @@ on:
       RUNNER:
         required: false
         type: string
+        default: "ubuntu-24.04"
     outputs:
-      environment: 
+      environment:
         value: ${{ jobs.determine-environment.outputs.environment }}
 
 jobs:
   determine-environment:
-    runs-on: ${{ inputs.RUNNER || 'ubuntu-latest' }}
+    runs-on: ${{ inputs.RUNNER }}
 
     steps:
       - name: Determine environment based on branch
