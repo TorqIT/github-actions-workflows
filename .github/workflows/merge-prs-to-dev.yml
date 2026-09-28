@@ -1,5 +1,5 @@
 # Merges a Pull Request branch into the development branch whenever the PR is approved.
-# 
+#
 # Use the following event trigger to ensure this workflow runs when a review is submitted:
 # on:
 #   pull_request_review:
@@ -17,10 +17,11 @@ on:
       RUNNER:
         required: false
         type: string
+        default: "ubuntu-24.04"
       DEVELOPMENT_BRANCH:
         required: false
         type: string
-        default: 'develop'
+        default: "develop"
     secrets:
       WORKFLOW_APP_ID:
         required: true
@@ -30,7 +31,7 @@ on:
 jobs:
   merge-pr-to-dev:
     name: Merge PR branch into ${{ inputs.DEVELOPMENT_BRANCH }} branch on approval
-    runs-on: ${{ inputs.RUNNER || 'ubuntu-latest' }}
+    runs-on: ${{ inputs.RUNNER }}
     if: github.event.review.state == 'approved'
 
     steps:
@@ -47,7 +48,7 @@ jobs:
           token: ${{ steps.generate_token.outputs.token }}
 
       - name: Merge PR branch into development branch
-        run: | 
+        run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git checkout ${{ inputs.DEVELOPMENT_BRANCH }}

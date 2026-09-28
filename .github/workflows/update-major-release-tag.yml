@@ -13,6 +13,7 @@ on:
       RUNNER:
         required: false
         type: string
+        default: "ubuntu-24.04"
     outputs:
       specific:
         description: "The specific release tag"
@@ -23,10 +24,10 @@ on:
 
 jobs:
   tag-major-release:
-    runs-on: ${{ inputs.RUNNER || 'ubuntu-latest' }}
+    runs-on: ${{ inputs.RUNNER }}
     outputs:
       major: ${{ steps.update.outputs.major }}
-      specific: ${{ steps.update.outputs.specific }} 
+      specific: ${{ steps.update.outputs.specific }}
 
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
